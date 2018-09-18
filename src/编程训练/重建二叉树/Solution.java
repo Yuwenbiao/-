@@ -1,7 +1,5 @@
 package 重建二叉树;
 
-import javax.swing.tree.TreeNode;
-
 /**
  * 输入某二叉树的前序遍历和中序遍历的结果，请重建出该二叉树。
  * 假设输入的前序遍历和中序遍历的结果中都不含重复的数字。
@@ -35,6 +33,7 @@ public class Solution {
         //前序遍历序列的第一个元素即该二叉树的根节点
         TreeNode root = new TreeNode(pre[startPre]);
 
+        //以根节点为中心，将左子树和右子树分别递归进行处理
         for (int i = startIn; i <= endIn; i++)
             if (in[i] == pre[startPre]) {
                 root.left = reConstructBinaryTree(pre, startPre + 1, startPre + i - startIn, in, startIn, i - 1);
